@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compile("org.slf4j:slf4j-api:1.7.7")
+    compile("org.slf4j:slf4j-api:1.7.25")
     compile('ch.qos.logback:logback-classic:1.2.3')
     
     compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
@@ -30,4 +30,14 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'local' : profile
+
+sourceSets {
+    main {
+        resources {
+            srcDirs "src/main/resources", "src/main/resources-${profile}"
+        }
+    }
 }
