@@ -14,7 +14,7 @@ public class BaseController {
 
     @RequestMapping("/")
     public String base() {
-        log.info("{}", zone);
+        log.debug("{}", zone);
         return zone;
     }
 
